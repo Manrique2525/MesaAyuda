@@ -113,15 +113,9 @@
   </header><!-- End Header -->
 
   <!-- Vendor JS Files -->
-  <script src="public/assets/vendor/apexcharts/apexcharts.min.js"></script>
-  <script src="public/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="public/assets/vendor/chart.js/chart.umd.js"></script>
-  <script src="public/assets/vendor/echarts/echarts.min.js"></script>
-  <script src="public/assets/vendor/quill/quill.js"></script>
-  <script src="public/assets/vendor/simple-datatables/simple-datatables.js"></script>
-  <script src="public/assets/vendor/tinymce/tinymce.min.js"></script>
-  <script src="public/assets/vendor/php-email-form/validate.js"></script>
-  <!-- Template Main JS File -->
-  <script src="public/assets/js/main.js"></script>
+  @section('scripts')
+  <script src="{{ asset('assets/js/custom.js') }}"></script>
+@endsection
+
 </body>
 </html>

@@ -39,6 +39,15 @@
           </li><!-- End Dashboard Nav -->
     
           <li class="nav-item">
+            <a class="nav-link collapsed" href="{{ route('supervisores.index') }}">
+              <i class="bi bi-card-list"></i>
+              <span>Supervisor</span>
+            </a>
+          </li><!-- End Register Page Nav -->
+          
+
+
+          <li class="nav-item">
             <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
               <i class="bi bi-menu-button-wide"></i><span>Components</span><i class="bi bi-chevron-down ms-auto"></i>
             </a>
