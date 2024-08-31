@@ -283,6 +283,6 @@
   <script src="public/assets/vendor/php-email-form/validate.js"></script>
   <!-- Template Main JS File -->
   <script src="public/assets/js/main.js"></script>
-  <script src="assets/js/main.js"></script>
+  <script src="public/assets/js/main.js"></script>
 </body>
 </html>

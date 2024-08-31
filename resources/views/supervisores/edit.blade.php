@@ -1,76 +1,95 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+@extends('layouts.app')
 
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="csrf-token" content="{{ csrf_token() }}">
+@section('content')
+<main id="main" class="main">
+    <div class="pagetitle">
+        <h1>Editar Supervisor</h1>
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{{ url('/') }}">Home</a></li>
+                <li class="breadcrumb-item"><a href="{{ route('supervisores.index') }}">Supervisores</a></li>
+                <li class="breadcrumb-item active">Editar Supervisor</li>
+            </ol>
+        </nav>
+    </div><!-- End Page Title -->
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <section class="section">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Formulario de Edición</h5>
 
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.bunny.net">
-    <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
+                        <!-- Formulario de Edición de Supervisor -->
+                        <form action="{{ route('supervisores.update', $supervisor->id) }}" method="POST">
+                            @csrf
+                            @method('PUT')
 
+                            <div class="row mb-3">
+                                <div class="col-md-4">
+                                    <label for="nombre" class="form-label">Nombre</label>
+                                    <input type="text" class="form-control" id="nombre" name="nombre" value="{{ old('nombre', $supervisor->nombre) }}" required>
+                                </div>
 
-    <!-- Scripts -->
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
-</head>
+                                <div class="col-md-4">
+                                    <label for="apellido_pat" class="form-label">Apellido Paterno</label>
+                                    <input type="text" class="form-control" id="apellido_pat" name="apellido_pat" value="{{ old('apellido_pat', $supervisor->apellido_pat) }}" required>
+                                </div>
 
-<body class="font-sans antialiased">
-    <div class="min-h-screen bg-gray-100 dark:bg-gray-900">
-        @include('layouts.navigation')
-
-        @include('layouts.aside')
-
-        <!-- Page Heading -->
-        @isset($header)
-            <header class="bg-white dark:bg-gray-800 shadow">
-                <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                    {{ $header }}
-                </div>
-            </header>
-        @endisset
-
-        <!-- Page Content -->
-        <main id="main" class="main">
-            <div class="pagetitle">
-                <h1>Supervisores</h1>
-                <nav>
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="{{ url('/') }}">Home</a></li>
-                        <li class="breadcrumb-item">Tabla</li>
-                        <li class="breadcrumb-item active">Supervisores</li>
-                    </ol>
-                </nav>
-            </div><!-- End Page Title -->
-    
-            <section class="section">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="card">
-                            <div class="card-body">
-                                <h5 class="card-title">Datatables</h5>
+                                <div class="col-md-4">
+                                    <label for="apellido_mat" class="form-label">Apellido Materno</label>
+                                    <input type="text" class="form-control" id="apellido_mat" name="apellido_mat" value="{{ old('apellido_mat', $supervisor->apellido_mat) }}" required>
+                                </div>
                             </div>
-                        </div>
+
+                            <div class="row mb-3">
+                                <div class="col-md-4">
+                                    <label for="edad" class="form-label">Edad</label>
+                                    <input type="number" class="form-control" id="edad" name="edad" value="{{ old('edad', $supervisor->edad) }}" required>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <label for="codigo_postal" class="form-label">Código Postal</label>
+                                    <input type="text" class="form-control" id="codigo_postal" name="codigo_postal" value="{{ old('codigo_postal', $supervisor->codigo_postal) }}" required>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <label for="fecha_nacimiento" class="form-label">Fecha de Nacimiento</label>
+                                    <input type="date" class="form-control" id="fecha_nacimiento" name="fecha_nacimiento" value="{{ old('fecha_nacimiento', $supervisor->fecha_nacimiento) }}" required>
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                <div class="col-md-4">
+                                    <label for="sexo" class="form-label">Sexo</label>
+                                    <select class="form-control" id="sexo" name="sexo" required>
+                                        <option value="M" {{ old('sexo', $supervisor->sexo) == 'M' ? 'selected' : '' }}>Masculino</option>
+                                        <option value="F" {{ old('sexo', $supervisor->sexo) == 'F' ? 'selected' : '' }}>Femenino</option>
+                                    </select>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <label for="rol" class="form-label">Rol</label>
+                                    <input type="text" class="form-control" id="rol" name="rol" value="{{ old('rol', $supervisor->rol) }}" required>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <label for="puesto" class="form-label">Puesto</label>
+                                    <input type="text" class="form-control" id="puesto" name="puesto" value="{{ old('puesto', $supervisor->puesto) }}" required>
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                <div class="col-md-12">
+                                    <button type="submit" class="btn btn-success">Guardar Cambios</button>
+                                    <a href="{{ route('supervisores.index') }}" class="btn btn-secondary">Cancelar</a>
+                                </div>
+                            </div>
+                        </form><!-- End Formulario de Edición de Supervisor -->
                     </div>
                 </div>
-            </section>
-        </main><!-- End #main -->
-    </div>
-</body>
-
-
-<script src="assets/vendor/apexcharts/apexcharts.min.js"></script>
-<script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-<script src="assets/vendor/chart.js/chart.umd.js"></script>
-<script src="assets/vendor/echarts/echarts.min.js"></script>
-<script src="assets/vendor/quill/quill.js"></script>
-<script src="assets/vendor/simple-datatables/simple-datatables.js"></script>
-<script src="assets/vendor/tinymce/tinymce.min.js"></script>
-<script src="assets/vendor/php-email-form/validate.js"></script>
-
-<!-- Template Main JS File -->
-<script src="assets/js/main.js"></script>
-
-</html>
+            </div>
+        </div>
+    </section>
+</main><!-- End #main -->
+@endsection

@@ -13,7 +13,11 @@
             </ol>
         </nav>
     </div><!-- End Page Title -->
-
+    @if (session('success'))
+    <div class="alert alert-success" role="alert">
+        {{ session('success') }}
+    </div>
+@endif
     <section class="section">
         <div class="row">
             <div class="col-lg-12">
@@ -29,11 +33,6 @@
                                     <th>Nombre</th>
                                     <th>Apellido Paterno</th>
                                     <th>Apellido Materno</th>
-                                    <th>Edad</th>
-                                    <th>Código Postal</th>
-                                    <th>Fecha de Nacimiento</th>
-                                    <th>Sexo</th>
-                                    <th>Rol</th>
                                     <th>Puesto</th>
                                     <th>Acciones</th>
                                 </tr>
@@ -44,14 +43,10 @@
                                         <td>{{ $supervisor->nombre }}</td>
                                         <td>{{ $supervisor->apellido_pat }}</td>
                                         <td>{{ $supervisor->apellido_mat }}</td>
-                                        <td>{{ $supervisor->edad }}</td>
-                                        <td>{{ $supervisor->codigo_postal }}</td>
-                                        <td>{{ $supervisor->fecha_nacimiento }}</td>
-                                        <td>{{ $supervisor->sexo }}</td>
-                                        <td>{{ $supervisor->rol }}</td>
                                         <td>{{ $supervisor->puesto }}</td>
                                         <td>
                                             <a href="{{ route('supervisores.show', $supervisor) }}" class="btn btn-primary btn-sm">Ver</a>
+                                            <a href="{{ route('supervisores.edit', $supervisor) }}" class="btn btn-danger btn-sm">Editar</a>
                                         </td>
                                     </tr>
                                 @endforeach
