@@ -90,6 +90,10 @@ class SupervisorController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        // Encuentra el supervisor por su ID
+        $supervisor = Supervisor::find($id);
+        $supervisor->delete();
+
+        return redirect()->route('supervisores.index')->with('success', 'Supervisor eliminado con éxito.');
     }
 }

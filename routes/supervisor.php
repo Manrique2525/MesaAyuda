@@ -7,3 +7,6 @@ use App\Http\Controllers\SupervisorController;
 Route::resource('supervisores', SupervisorController::class)->parameters([
     'supervisores' => 'supervisor',
 ]);
+
+Route::delete('/supervisores/{id}', [SupervisorController::class, 'destroy'])->name('supervisores.delete');
+
