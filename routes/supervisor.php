@@ -1,12 +1,9 @@
-
-
 <?php
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SupervisorController;
 
-Route::resource('supervisores', SupervisorController::class);
-
-
-
-
+// Aquí defines las rutas del recurso 'supervisores'
+Route::resource('supervisores', SupervisorController::class)->parameters([
+    'supervisores' => 'supervisor',
+]);
