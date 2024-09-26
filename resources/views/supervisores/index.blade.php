@@ -53,8 +53,8 @@
                                                     method="POST" style="display:inline;">
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger btn-sm"
-                                                        onclick="return confirm('¿Estás seguro de que deseas eliminar este supervisor?');">Eliminar</button>
+                                                    <button type="button" class="btn btn-danger btn-sm"
+                                                        onclick="confirmDelete(event)">Eliminar</button>
                                                 </form>
                                             </td>
                                         </tr>
@@ -69,3 +69,30 @@
         </section>
     </main><!-- End #main -->
 @endsection
+
+
+<script>
+    function confirmDelete(event) {
+        event.preventDefault(); // Prevenir el comportamiento por defecto del botón
+        const form = event.target.closest('form'); // Obtiene el formulario más cercano
+
+        Swal.fire({
+            title: "¿Estás seguro?",
+            text: "¡No podrás revertir esto!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Sí, eliminarlo!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                form.submit(); // Envía el formulario si se confirma la eliminación
+                Swal.fire({
+                    title: "¡Eliminado!",
+                    text: "Tu archivo ha sido eliminado.",
+                    icon: "success"
+                });
+            }
+        });
+    }
+</script>

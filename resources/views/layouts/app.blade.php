@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -26,6 +27,7 @@
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
+
 <body class="font-sans antialiased">
     <div class="min-h-screen bg-gray-100 dark:bg-gray-900">
         @include('layouts.navigation')
@@ -52,5 +54,7 @@
     <script src="{{ asset('assets/vendor/quill/quill.js') }}"></script>
     <script src="{{ asset('assets/vendor/simple-datatables/simple-datatables.js') }}"></script>
     <script src="{{ asset('assets/js/main.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
+
 </html>
