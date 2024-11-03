@@ -25,7 +25,7 @@
                         <div class="card-body">
                             <h5 class="card-title">Datatables</h5>
                             <!-- Table with stripped rows -->
-                            <a href="{{ route('supervisores.create') }}" class="btn btn-primary btn-sm">Crear</a>
+                            <a href="{{ route('supervisores.create') }}" class="btn btn-primary btn-sm left">Crear</a>
 
                             <table class="table datatable">
                                 <thead>
@@ -77,7 +77,7 @@
         const form = event.target.closest('form'); // Obtiene el formulario más cercano
 
         Swal.fire({
-            title: "¿Estás seguro?",
+            title: "¿Estás seguro de eliminar este supervisor?",
             text: "¡No podrás revertir esto!",
             icon: "warning",
             showCancelButton: true,
@@ -89,7 +89,7 @@
                 form.submit(); // Envía el formulario si se confirma la eliminación
                 Swal.fire({
                     title: "¡Eliminado!",
-                    text: "Tu archivo ha sido eliminado.",
+                    text: "El supervisor ha sido eliminado.",
                     icon: "success"
                 });
             }
