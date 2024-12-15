@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mesa de Ayuda</title>
+</head>
+<body>
+
+  <div class="container">
+    <section class="section register min-vh-100 d-flex flex-column align-items-center justify-content-center py-4">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-4 col-md-6 d-flex flex-column align-items-center justify-content-center">
+                    <div class="d-flex justify-content-center py-1">
+                        <a href="/" class="logo d-flex align-items-center w-auto">
+                          <img class="mb-4" src="login.jpg" alt="" width="92" height="47">
+                        </a>
+                    </div><!-- End Logo -->
+
+                    <div class="card mb-3">
+                        <div class="card-body">
+                            <div class="pt-4 pb-2">
+                                <h5 class="card-title text-center fw-medium fs-3">Inicie Sesión</h5>
+                                <p class="text-center small">Ingrese el usuario y contraseña para iniciar sesión</p>
+                            </div>
+
+                            <!-- Aquí empieza el formulario -->
+                            <form method="POST" action="" class="row g-3 needs-validation" >
+
+
+                                <!-- Email Address -->
+                                <div class="col-12">
+
+                                    <label for="email" class="form-label">Email</label>
+
+
+                                    <div class="input-group has-validation">
+                                        <div class="input-group-text" id="inputGroupPrepend">&#64;</div>
+                                        <input type="email" name="email" class="form-control" id="email" value="" required autofocus autocomplete="username">
+                                        <div class="invalid-feedback">
+                                          Por favor, introduzca su nombre de usuario.
+                                        </div>
+
+                                         <!--
+                                        <x-input-error :messages="$errors->get('email')" class="mt-2" />
+
+                                         -->
+                                    </div>
+                                </div>
+
+                                <!-- Password -->
+                                <div class="col-12">
+                                    <label for="password" class="form-label">Password</label>
+                                    <input type="password" name="password" class="form-control" id="password" required autocomplete="current-password">
+
+                                    <!--
+
+                                    <x-input-error :messages="$errors->get('password')" class="mt-2" />
+
+                                    -->
+
+                                </div>
+
+                                <!-- Remember Me -->
+                                <div class="col-12">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" name="remember" value="true" id="remember_me">
+                                        <label class="form-check-label" for="remember_me">
+
+                                          Recuérdame
+
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <!-- Submit Button -->
+                                <div class="col-12">
+                                    <button class="btn btn-primary w-100" type="submit">Iniciar</button>
+                                </div>
+
+                                <!-- Forgot Password -->
+                                <div class="col-12">
+                                    <p class="small mb-0">
+
+                                  <!--
+                                                                                    @if (Route::has('password.request'))
+                                        <a class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800" href="{{ route('password.request') }}">
+                                            {{ __('Forgot your password?') }}
+                                        </a>
+                                        @endif
+                                   -->
+
+
+                                    </p>
+                                </div>
+                            </form>
+                            <!-- Aquí termina el formulario -->
+                        </div>
+                    </div>
+
+                    <div class="col-12">
+                        <p class="small mb-0">¿No tienes una cuenta? <a href="">Crear una cuenta</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+  </div>
+
+</body>
+</html>
