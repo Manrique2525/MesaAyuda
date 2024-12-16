@@ -1,45 +1,31 @@
 import { NgModule } from '@angular/core';
-import { Route, RouterModule, Routes } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './auth/components/login/login.component';
 import { SiderbarComponent } from './shared/components/siderbar/siderbar.component';
-import { SupervisorIndexComponent } from './supervisor/supervisor-index/supervisor-index.component';
 
 const routes: Routes = [
   {
     path: 'login',
-    component:   LoginComponent
+    component: LoginComponent
   },
   {
     path: 'siderbar',
-    component:   SiderbarComponent,
+    component: SiderbarComponent,
     children: [
       {
-        path: 'supervisor', component: SupervisorIndexComponent
-      },
-      {
-        path: 'profile', component: LoginComponent
+        path: 'supervisor',
+        loadChildren: () => import('./supervisor/supervisor.module').then(m => m.SupervisorModule)
       }
     ]
   },
   {
     path: '**',
-    redirectTo:   'siderbar'
+    redirectTo: 'siderbar'
   }
-
-]
-
-
+];
 
 @NgModule({
-  imports: [
-    RouterModule.forRoot(routes),
-  ],
-  exports: [
-    RouterModule
-  ],
-
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule]
 })
-
-export class AppRoutingModule {}
-
-
+export class AppRoutingModule { }
