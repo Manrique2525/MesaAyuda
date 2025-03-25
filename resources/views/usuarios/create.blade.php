@@ -21,33 +21,53 @@
                         <h5 class="card-title">Formulario de Creación</h5>
 
                         <!-- Formulario de Creación de Usuario -->
-                        <form action="{{ route('usuarios.store') }}" method="POST">
+                        <form action="{{ route('usuarios.store') }}" method="POST" novalidate>
                             @csrf
 
                             <div class="row mb-3">
                                 <div class="col-md-4">
                                     <label for="name" class="form-label">Nombre</label>
-                                    <input type="text" class="form-control" id="name" name="name" required>
+                                    <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" name="name" value="{{ old('name') }}">
+                                    @error('name')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
                                 </div>
 
                                 <div class="col-md-4">
                                     <label for="email" class="form-label">Correo Electrónico</label>
-                                    <input type="email" class="form-control" id="email" name="email" required>
+                                    <input type="email" class="form-control @error('email') is-invalid @enderror" id="email" name="email" value="{{ old('email') }}">
+                                    @error('email')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
                                 </div>
 
                                 <div class="col-md-4">
                                     <label for="password" class="form-label">Contraseña</label>
-                                    <input type="password" class="form-control" id="password" name="password" required>
+                                    <input type="password" class="form-control @error('password') is-invalid @enderror" id="password" name="password" >
+                                    @error('password')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
                                 </div>
                             </div>
 
                             <div class="row mb-3">
                                 <div class="col-md-4">
+                                    <label for="password_confirmation" class="form-label">Confirmar Contraseña</label>
+                                    <input type="password" class="form-control @error('password_confirmation') is-invalid @enderror" id="password_confirmation" name="password_confirmation" >
+                                    @error('password_confirmation')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                </div>
+
+                                <div class="col-md-4">
                                     <label for="rol" class="form-label">Rol</label>
-                                    <select class="form-control" id="rol" name="rol" required>
-                                        <option value="administrador">Administrador</option>
-                                        <option value="usuario">Usuario</option>
+                                    <select class="form-control @error('rol') is-invalid @enderror" id="rol" name="rol">
+                                        <option value="administrador" {{ old('rol') == 'administrador' ? 'selected' : '' }}>Administrador</option>
+                                        <option value="usuario" {{ old('rol') == 'usuario' ? 'selected' : '' }}>Usuario</option>
                                     </select>
+                                    @error('rol')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
                                 </div>
                             </div>
 

@@ -27,20 +27,20 @@ class UserController extends Controller
         $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|email|unique:users,email',
-            'password' => 'required|min:8',
+            'password' => 'required|min:8|confirmed',  
             'rol' => 'required|in:administrador,usuario',
         ]);
-
+    
         User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
             'rol' => $request->rol,
         ]);
-
+    
         return redirect()->route('usuarios.index')->with('success', 'Usuario creado exitosamente.');
     }
-
+    
     // Mostrar formulario de edición
     public function edit(User $usuario)
     {
