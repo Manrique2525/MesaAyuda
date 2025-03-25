@@ -37,7 +37,13 @@
               <span>Dashboard</span>
             </a>
           </li><!-- End Dashboard Nav -->
-    
+          <li class="nav-item">
+            <a class="nav-link collapsed" href="{{ route('usuarios.index') }}">
+                <i class="bi bi-card-list"></i> <!-- Icono de Bootstrap Icons -->
+                <span>Usuarios</span>
+            </a>
+        </li><!-- End Register Page Nav -->
+        
           <li class="nav-item">
             <a class="nav-link collapsed" href="{{ route('supervisores.index') }}">
               <i class="bi bi-card-list"></i>
